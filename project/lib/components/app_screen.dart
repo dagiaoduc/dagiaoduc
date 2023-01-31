@@ -1,0 +1,37 @@
+
+import 'package:flutter/material.dart';
+import 'package:project/components/main_state.dart';
+import 'package:project/screen/attendance_screen.dart';
+import 'package:project/screen/homescreen.dart';
+import 'package:project/screen/test_screen.dart';
+
+class AppScreen<T extends MainState> extends StatelessWidget {
+  const AppScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      //title: globals.configApp.appName,
+      title: 'Test',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: AppScreenPage<T>(),
+    );
+  }
+}
+class AppScreenPage<T extends MainState> extends StatefulWidget {
+  const AppScreenPage({Key? key}) : super(key: key);
+
+  @override
+  State<AppScreenPage> createState() {
+    if(T == HomeScreen) {
+      return HomeScreen();
+    }else if(T == TestScreen) {
+      return TestScreen();
+    }else if(T == AttendanceScreen) {
+      return AttendanceScreen();
+    }return HomeScreen();
+  }
+}
