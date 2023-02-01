@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:project/components/main_state.dart';
 import 'package:project/screen/attendance_screen.dart';
+import 'package:project/screen/class_list_screen.dart';
 import 'package:project/screen/homescreen.dart';
 import 'package:project/screen/test_screen.dart';
 
@@ -32,6 +33,9 @@ class AppScreenPage<T extends MainState> extends StatefulWidget {
       return TestScreen();
     }else if(T == AttendanceScreen) {
       return AttendanceScreen();
-    }return HomeScreen();
+    }else if(T == ClassListScreen) {
+      return ClassListScreen();
+    }
+    return HomeScreen();
   }
 }

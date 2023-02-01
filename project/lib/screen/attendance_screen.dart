@@ -98,7 +98,7 @@ class AttendanceScreen extends MainState{
           ],
         ),
       ),
-      bottomNavigationBar: getBottomTab(context, 1),
+      bottomNavigationBar: getBottomTab(context, 2),
     );
   }
 }

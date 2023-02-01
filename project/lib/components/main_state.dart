@@ -1,8 +1,8 @@
 
-
 import 'package:flutter/material.dart';
 import 'package:project/components/app_screen.dart';
 import 'package:project/screen/attendance_screen.dart';
+import 'package:project/screen/class_list_screen.dart';
 import 'package:project/screen/homescreen.dart';
 import 'package:project/screen/test_screen.dart';
 
@@ -11,7 +11,7 @@ import 'package:project/screen/test_screen.dart';
 void pop(BuildContext context) {
   // Navigator.pop(context);
 }
-abstract class MainState extends State<AppScreenPage> {
+abstract class MainState extends State<AppScreenPage>{
   static late MainState currentScreen;
   BottomNavigationBar getBottomTab(BuildContext context, int index) {
     return BottomNavigationBar(
@@ -38,7 +38,7 @@ abstract class MainState extends State<AppScreenPage> {
         BottomNavigationBarItem(
           icon: IconButton(
             icon: Icon(
-              Icons.store,
+              Icons.list_alt_sharp,
               color: (index == 1) ? Colors.deepOrangeAccent : Colors.black45,
             ),
             onPressed: () {
@@ -46,7 +46,7 @@ abstract class MainState extends State<AppScreenPage> {
               pop(context);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AppScreen<AttendanceScreen>()),
+                MaterialPageRoute(builder: (context) => AppScreen<ClassListScreen>()),
               );
             },
           ),
@@ -55,7 +55,7 @@ abstract class MainState extends State<AppScreenPage> {
         BottomNavigationBarItem(
           icon: IconButton(
             icon: Icon(
-              Icons.local_shipping,
+              Icons.width_normal_outlined,
               color: (index == 2) ? Colors.deepOrangeAccent : Colors.black45,
             ),
             onPressed: () {
@@ -63,7 +63,7 @@ abstract class MainState extends State<AppScreenPage> {
               pop(context);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AppScreen<TestScreen>()),
+                MaterialPageRoute(builder: (context) => AppScreen<AttendanceScreen>()),
               );
             },
           ),
