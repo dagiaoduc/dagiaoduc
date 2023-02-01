@@ -16,6 +16,7 @@ class AttendanceScreen extends MainState{
     OptionModel(value: "0", title: "Giáo Viên")
   ];*/
   // Option 2
+  int _value = 1;
   @override
   Widget build (BuildContext context){
     final x = MediaQuery.of(context).size.width;
@@ -168,33 +169,103 @@ class AttendanceScreen extends MainState{
             ),
             Padding(padding: EdgeInsets.only(bottom: 10)),
             Container(
-              padding: EdgeInsets.all(10),
               color:  Color.fromRGBO(56, 252, 111, 0.91),
               height:50,
               child:Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('STT',style: TextStyle(color: Colors.white)),
-                  Text('Họ và Tên',style: TextStyle(color: Colors.white)),
-                  Text('Có mặt',style: TextStyle(color: Colors.white)),
-                  Text('Vắng',style: TextStyle(color: Colors.white)),
-                  Text('Note',style: TextStyle(color: Colors.white)),
+                  Container(width:x*0.1,alignment: Alignment.center ,child: Text('STT',style: TextStyle(color: Colors.white),textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,)),
+                  Container(width:x*0.3,alignment: Alignment.center ,child: Text('Họ và Tên',style: TextStyle(color: Colors.white),textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,)),
+                  Container(width:x*0.15,alignment: Alignment.center ,child: Text('Có mặt',style: TextStyle(color: Colors.white),textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,)),
+                  Container(width:x*0.15,alignment: Alignment.center ,child: Text('Vắng',style: TextStyle(color: Colors.white),textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,)),
+                  Container(width:x*0.3,alignment: Alignment.center ,child: Text('Note',style: TextStyle(color: Colors.white),textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,)),
                 ],
               ),
             ),
             Column(
               children: [
+                for (int i = 1; i < 10; i++)
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('1',style: TextStyle(color: Colors.black)),
-                    Text('Nguyễn Văn Lươn',style: TextStyle(color: Colors.black)),
-                    Text('STT',style: TextStyle(color: Colors.black)),
-                    Text('STT',style: TextStyle(color: Colors.black)),
-                    Text('Rất Lươn',style: TextStyle(color: Colors.black)),
+                    Container(width:x*0.1,alignment: Alignment.center,child: Text('1',style: TextStyle(color: Colors.black),textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,)),
+                    Container(width:x*0.3,alignment: Alignment.center ,child: Text('Nguyễn Văn Lươn',style: TextStyle(color: Colors.black),textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,maxLines: 3,)),
+                    Container(
+                        width:x*0.15,
+                        alignment: Alignment.center ,
+                        child: Radio(
+                          value: 1,
+                          groupValue: _value,
+                          onChanged: (value){
+                            setState(() {
+                              _value = value!;
+                            });
+                          },
+                        ),
+                    ),
+                    Container(
+                      width:x*0.15,
+                      alignment: Alignment.center ,
+                      child: Radio(
+                        value: 2,
+                        groupValue: _value,
+                        onChanged: (value){
+                          setState(() {
+                            _value = value!;
+                          });
+                        },
+                      ),
+                    ),
+                    Container(width:x*0.3,alignment: Alignment.center ,child: Text('Siêu dài xem có tràn không nào dài nữa dài mãi siêu dài tràn cả text',style: TextStyle(color: Colors.black),textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,maxLines: 3,)),
                   ],
                 ),
               ],
+            ),
+          ],
+        ),
+      ),
+      bottomSheet: Container(
+        height: 100,
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  width: x/2,
+                  height: 50,
+                  color: Colors.blue,
+                  child:Text(
+                    'Đi học: 12',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  width: x/2,
+                  height: 50,
+                  color: Colors.red,
+                  child:Text(
+                    'Vắng mặt: 1',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green, // background
+                onPrimary: Colors.white, // foreground
+                minimumSize: Size(x, 50),
+              ),
+                onPressed: (){},
+                child: Text('Hoàn thành điểm danh', style: TextStyle(color: Colors.white)),
             ),
           ],
         ),
