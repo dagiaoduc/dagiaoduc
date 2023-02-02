@@ -20,7 +20,7 @@ Future fetchApiData(String url) async {
   return null;
 }
 
-Future uploadFileSync(String path) async {
+/*Future uploadFileSync(String path) async {
   var dio = new Dio();
   dio.options.baseUrl = BASE_URL_REST;
   dio.options.connectTimeout = 5000; //5s
@@ -41,7 +41,7 @@ Future uploadFileSync(String path) async {
   dynamic response = await dio.post('/api/upload', data: formData);
   dynamic obj = jsonDecode('${response}');
   return obj['url'];
-}
+}*/
 
 Future fetchApiContent(String url) async {
   print(url);
