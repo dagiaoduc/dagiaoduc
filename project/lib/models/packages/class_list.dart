@@ -20,7 +20,6 @@ class Class{
     var json = await httpApp.fetchApiData(API_CLASS_FIND + "?class_id=${class_id}");
     if (json == null) return null;
 
-    //Hoi fix chut -> giam loi goi ve sau
     var list = json as List;
     var availableList = list.map((e) => Class.fromJson(e)).toList();
 
