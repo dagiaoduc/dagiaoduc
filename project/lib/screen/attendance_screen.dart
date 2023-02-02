@@ -182,45 +182,55 @@ class AttendanceScreen extends MainState{
                 ],
               ),
             ),
-            Column(
-              children: [
-                for (int i = 1; i < 10; i++)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(width:x*0.1,alignment: Alignment.center,child: Text('1',style: TextStyle(color: Colors.black),textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,)),
-                    Container(width:x*0.3,alignment: Alignment.center ,child: Text('Nguyễn Văn Lươn',style: TextStyle(color: Colors.black),textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,maxLines: 3,)),
-                    Container(
-                        width:x*0.15,
-                        alignment: Alignment.center ,
-                        child: Radio(
-                          value: 1,
-                          groupValue: _value,
-                          onChanged: (value){
-                            setState(() {
-                              _value = value!;
-                            });
-                          },
-                        ),
-                    ),
-                    Container(
-                      width:x*0.15,
-                      alignment: Alignment.center ,
-                      child: Radio(
-                        value: 2,
-                        groupValue: _value,
-                        onChanged: (value){
-                          setState(() {
-                            _value = value!;
-                          });
-                        },
+            Container(
+              height: 400,
+              child: ListView.builder(
+                itemCount: 15,
+                
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(width:x*0.1,alignment: Alignment.center,child: Text('1',style: TextStyle(color: Colors.black),textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,)),
+                          Container(width:x*0.3,alignment: Alignment.center ,child: Text('Nguyễn Văn Lươn',style: TextStyle(color: Colors.black),textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,maxLines: 3,)),
+                          Container(
+                            width:x*0.15,
+                            alignment: Alignment.center ,
+                            child: Radio(
+                              value: 1,
+                              groupValue: _value,
+                              onChanged: (value){
+                                setState(() {
+                                  _value = value!;
+                                });
+                              },
+                            ),
+                          ),
+                          Container(
+                            width:x*0.15,
+                            alignment: Alignment.center ,
+                            child: Radio(
+                              value: 2,
+                              groupValue: _value,
+                              onChanged: (value){
+                                setState(() {
+                                  _value = value!;
+                                });
+                              },
+                            ),
+                          ),
+                          Container(width:x*0.3,alignment: Alignment.center ,child: Text('Siêu dài xem có tràn không nào dài nữa dài mãi siêu dài tràn cả text',style: TextStyle(color: Colors.black),textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,maxLines: 3,)),
+
+                        ],
                       ),
-                    ),
-                    Container(width:x*0.3,alignment: Alignment.center ,child: Text('Siêu dài xem có tràn không nào dài nữa dài mãi siêu dài tràn cả text',style: TextStyle(color: Colors.black),textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,maxLines: 3,)),
-                  ],
-                ),
-              ],
-            ),
+                    ],
+                  );
+                },
+              ),
+            )
+
           ],
         ),
       ),
@@ -260,7 +270,7 @@ class AttendanceScreen extends MainState{
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Colors.green, // background
+                primary: Color.fromRGBO(56, 252, 111, 0.91), // background
                 onPrimary: Colors.white, // foreground
                 minimumSize: Size(x, 50),
               ),
