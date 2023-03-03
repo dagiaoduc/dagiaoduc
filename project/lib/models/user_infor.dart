@@ -11,7 +11,7 @@ class UserInfo{
   late dynamic studentRole;
   late dynamic classRole;
   late dynamic parentRole;
-  late dynamic teacherRole; 
+  late dynamic teacherRole;
 
   UserInfo({
     required this.name,

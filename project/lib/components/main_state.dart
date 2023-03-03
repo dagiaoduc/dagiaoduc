@@ -1,11 +1,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:project/components/app_screen.dart';
-import 'package:project/screen/attendance_screen.dart';
-import 'package:project/screen/class_list_screen.dart';
-import 'package:project/screen/homescreen.dart';
-import 'package:project/screen/class_detail_screen.dart';
-import 'package:project/screen/user_infor_screen.dart';
+import 'package:project/screen/customer/attendance_screen.dart';
+import 'package:project/screen/customer/class_detail_screen.dart';
+import 'package:project/screen/customer/class_list_screen.dart';
+import 'package:project/screen/customer/homescreen.dart';
+import 'package:project/screen/general/user_infor_screen.dart';
+
 
 
 
