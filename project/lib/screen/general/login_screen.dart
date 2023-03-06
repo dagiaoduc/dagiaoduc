@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:project/components/app_screen.dart';
 import 'package:project/components/main_state.dart';
+import 'package:project/screen/customer/homescreen.dart';
 
 class LoginScreen extends MainState {
   @override
@@ -87,7 +89,11 @@ class LoginScreen extends MainState {
                   child: const Text('ĐĂNG NHẬP',
                       style: TextStyle(color: Colors.white, fontSize: 18)),
                   onPressed: () {
-
+                    pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AppScreen<HomeScreen>()),
+                    );
                   },
                 ),
               ),

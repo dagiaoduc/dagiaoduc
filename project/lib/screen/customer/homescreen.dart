@@ -11,7 +11,7 @@ class HomeScreen extends MainState{
           child: Column(
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   CircleAvatar(
                     backgroundImage: NetworkImage('https://demo.ziczacvn.com/uploads/stores/160/2023/03/avartar.png'),
@@ -26,13 +26,17 @@ class HomeScreen extends MainState{
                     ),
                       onPressed: (){},
                       child: Text(
-                          'Bạn đang nghĩ gì',
+                          'Bạn đang nghĩ gì           ',
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             color: Colors.black
                           ),
                       ),
                   ),
+                  IconButton(
+                      onPressed: (){}, 
+                      icon: Image.network('https://demo.ziczacvn.com/uploads/stores/160/2023/03/vote.png')
+                  )
                 ],
               ),
             ],
