@@ -1,9 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:project/components/app_screen.dart';
 import 'package:project/components/main_state.dart';
+import 'package:project/screen/general/login_screen.dart';
 
 class WellComeScreen extends MainState{
-
   @override
+  changeScreen(){
+    Future.delayed(const Duration(seconds: 5),(){
+      pop(context);
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => AppScreen<LoginScreen>()),
+      );
+    });
+  }
+  void initState(){
+    changeScreen();
+    super.initState();
+  }
   Widget build (BuildContext context){
     return SafeArea(
       child: Container(
@@ -15,11 +30,9 @@ class WellComeScreen extends MainState{
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                child:  Image(
-                  image: NetworkImage('https://demo.ziczacvn.com/uploads/stores/160/2023/03/thiet-ke-logo-truong-mam-non-4.jpg'),
-                  height:250,
-                  width: 300,
-                  fit: BoxFit.fill,
+                child: LoadingAnimationWidget.halfTriangleDot(
+                  color: Colors.greenAccent,
+                  size: 200,
                 ),
               ),
               Container(
@@ -37,6 +50,7 @@ class WellComeScreen extends MainState{
               Container(
                 margin: EdgeInsets.only(top: 40),
               ),
+
             ],
           ),
         ),
