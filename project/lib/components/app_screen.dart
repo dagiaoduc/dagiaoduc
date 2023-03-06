@@ -6,6 +6,7 @@ import 'package:project/screen/customer/class_detail_screen.dart';
 import 'package:project/screen/customer/class_list_screen.dart';
 import 'package:project/screen/customer/homescreen.dart';
 import 'package:project/screen/general/login_screen.dart';
+import 'package:project/screen/general/regsiter_screen.dart';
 import 'package:project/screen/general/user_infor_screen.dart';
 import 'package:project/screen/general/wellcome_screen.dart';
 
@@ -44,6 +45,9 @@ class AppScreenPage<T extends MainState> extends StatefulWidget {
       return WellComeScreen();
     }else if(T == LoginScreen) {
       return LoginScreen();
+    }
+    else if(T == RegsiterScreen) {
+      return RegsiterScreen();
     }
     return HomeScreen();
   }
