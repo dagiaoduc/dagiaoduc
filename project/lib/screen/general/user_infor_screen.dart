@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:project/components/main_state.dart';
 
-class TestScreen extends MainState{
+class UserInforScreen extends MainState{
   @override
   Widget build (BuildContext context){
     return Scaffold(

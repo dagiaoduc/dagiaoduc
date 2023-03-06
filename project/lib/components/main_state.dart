@@ -1,10 +1,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:project/components/app_screen.dart';
-import 'package:project/screen/attendance_screen.dart';
-import 'package:project/screen/class_list_screen.dart';
-import 'package:project/screen/homescreen.dart';
-import 'package:project/screen/test_screen.dart';
+import 'package:project/screen/customer/attendance_screen.dart';
+import 'package:project/screen/customer/class_detail_screen.dart';
+import 'package:project/screen/customer/class_list_screen.dart';
+import 'package:project/screen/customer/homescreen.dart';
+import 'package:project/screen/general/user_infor_screen.dart';
+
 
 
 
@@ -38,7 +40,7 @@ abstract class MainState extends State<AppScreenPage>{
         BottomNavigationBarItem(
           icon: IconButton(
             icon: Icon(
-              Icons.list_alt_sharp,
+              Icons.groups_outlined ,
               color: (index == 1) ? Colors.deepOrangeAccent : Colors.black45,
             ),
             onPressed: () {
@@ -55,7 +57,7 @@ abstract class MainState extends State<AppScreenPage>{
         BottomNavigationBarItem(
           icon: IconButton(
             icon: Icon(
-              Icons.width_normal_outlined,
+              Icons.note_alt_sharp,
               color: (index == 2) ? Colors.deepOrangeAccent : Colors.black45,
             ),
             onPressed: () {
@@ -72,7 +74,7 @@ abstract class MainState extends State<AppScreenPage>{
         BottomNavigationBarItem(
           icon: IconButton(
             icon: Icon(
-              Icons.draw_sharp,
+              Icons.campaign_rounded,
               color: (index == 3) ? Colors.deepOrangeAccent: Colors.black45,
             ),
             onPressed: () {
@@ -80,7 +82,7 @@ abstract class MainState extends State<AppScreenPage>{
               pop(context);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AppScreen<TestScreen>()),
+                MaterialPageRoute(builder: (context) => AppScreen<ClassDetailScreen>()),
               );
             },
           ),
@@ -97,7 +99,7 @@ abstract class MainState extends State<AppScreenPage>{
               pop(context);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AppScreen<TestScreen>()),
+                MaterialPageRoute(builder: (context) => AppScreen<UserInforScreen>()),
               );
             },
           ),
