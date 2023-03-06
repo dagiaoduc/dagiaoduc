@@ -221,16 +221,28 @@ class AttendanceScreen extends MainState{
                               },
                             ),
                           ),
-                          Container(width:x*0.3,alignment: Alignment.center ,child: Text('Siêu dài xem có tràn không nào dài nữa dài mãi siêu dài tràn cả text',style: TextStyle(color: Colors.black),textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,maxLines: 3,)),
-
+                          GestureDetector(
+                            onTap:(){
+                              openDialog();
+                            },
+                            child: Container(
+                                width:x*0.3,
+                                alignment: Alignment.center ,
+                                child: Text(
+                                  'demo',
+                                  style: TextStyle(color: Colors.black),
+                                  textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,
+                                  maxLines: 3,)
+                            ),
+                          ),
                         ],
                       ),
                     ],
                   );
                 },
               ),
-            )
-
+            ),
+            Padding(padding: EdgeInsets.only(bottom: 100)),
           ],
         ),
       ),
@@ -283,4 +295,24 @@ class AttendanceScreen extends MainState{
       bottomNavigationBar: getBottomTab(context, 2),
     );
   }
+  Future openDialog()=> showDialog(
+      context: context,
+      builder: (context)=> AlertDialog(
+          title: Text('Lý do'),
+          content: TextField(
+            maxLines: 5,
+            decoration: InputDecoration(hintText: 'Nhập thông tin'),
+          ),
+          actions:[
+            TextButton(
+              child:Text('Hoàn thành'),
+              onPressed: (){},
+            ),
+          ],
+      ),
+  );
+  void submit(){
+    Navigator.of(context).pop();
+  }
 }
+
