@@ -116,84 +116,16 @@ class ClassDetailScreen extends MainState {
                       ),
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    height: 100,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Container(
-                              width: x*0.4,
-                              alignment: Alignment.center,
-                              height: 35,
-                              decoration:BoxDecoration(
-                                color: Colors.greenAccent,
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child:Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                      alignment: Alignment.center,
-                                      child: Text('Tổng số học sinh: '+ '16',style: TextStyle(color:Colors.white,fontSize: 13, fontWeight: FontWeight.w500))
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(padding: EdgeInsets.only(bottom: 10 )),
-                            Container(
-                                width: x*0.4,
-                                alignment: Alignment.center,
-                                height: 35,
-                                decoration:BoxDecoration(
-                                  color: Colors.greenAccent,
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child:Text('Nghỉ học có phép: ' + '02',style: TextStyle(color:Colors.white,fontSize: 13, fontWeight: FontWeight.w500))
-                            ),
-                          ],
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                                width: x*0.4,
-                                alignment: Alignment.center,
-                                height: 35,
-                                decoration:BoxDecoration(
-                                  color: Colors.greenAccent,
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child:Text('Học sinh trong lớp: ' + '12',style: TextStyle(color:Colors.white,fontSize: 13, fontWeight: FontWeight.w500))
-                            ),
-                            Padding(padding: EdgeInsets.only(bottom: 10 )),
-                            Container(
-                                width: x*0.4,
-                                alignment: Alignment.center,
-                                height: 35,
-                                decoration:BoxDecoration(
-                                  color: Colors.greenAccent,
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child:Text('Nghỉ học không phép: ' + '02',style: TextStyle(color:Colors.white,fontSize: 13, fontWeight: FontWeight.w500))
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+
                   Container(
                     decoration:BoxDecoration(
-                      color: Colors.redAccent,
+                      color: Colors.white60,
+                      border: Border.all(
+                        color: Colors.grey,
+                      ),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    height: 100,
+                    height: 120,
                     width: x,
                     margin: EdgeInsets.all(10),
                     child: Column(
@@ -201,17 +133,17 @@ class ClassDetailScreen extends MainState {
                       children: [
                         Container(
                           padding: EdgeInsets.all(10),
-                          child: Text('GIÁO VIÊN PHỤ TRÁCH:', style: TextStyle(color:Colors.white,fontSize: 13, fontWeight: FontWeight.bold)),
+                          child: Text('GIÁO VIÊN PHỤ TRÁCH:', style: TextStyle(color:Colors.black,fontSize: 13, fontWeight: FontWeight.bold)),
                         ),
                         Container(
-                          height: 50,
+                          height: 60,
                           child: ListView.builder(
                               padding: const EdgeInsets.all(10),
                               itemCount: 3,
                               itemBuilder: (context, index){
                                 return Container(
                                   height: 20,
-                                  child: Text('NGuyễn Hoàng Phương Nam', style: TextStyle(color:Colors.white,fontSize: 13, fontWeight: FontWeight.bold)),
+                                  child: Text('NGuyễn Hoàng Phương Nam', style: TextStyle(color:Colors.black,fontSize: 13, fontWeight: FontWeight.bold)),
                                 );
                               },
                           ),
@@ -219,7 +151,6 @@ class ClassDetailScreen extends MainState {
                       ],
                     ),
                   ),
-
 
                 ],
               ),

@@ -8,13 +8,12 @@ class RegsiterScreen extends MainState {
     OptionModel(value: "1", title: "Giáo Viên"),
     OptionModel(value: "0", title: "Phụ huynh"),
   ];
-
-  @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
