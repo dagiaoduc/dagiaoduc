@@ -26,7 +26,8 @@ class AttendanceScreen extends MainState{
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
-            SafeArea(child: Container(
+            SafeArea(
+              child: Container(
               height: 40,
               child: Row(
                 children: [
