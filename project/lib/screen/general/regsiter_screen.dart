@@ -204,7 +204,7 @@ class RegsiterScreen extends MainState {
                             setState(() => date = newDate);
                             dateP = '${date.day}/${date.month}/${date.year}';
                           },
-                          icon: Icon(Icons.edit_note,)),
+                          icon: Icon(Icons.calendar_month_outlined,)),
                     ),
                     Container(
                         alignment: Alignment.center,
