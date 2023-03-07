@@ -168,6 +168,8 @@ class LoginScreen extends MainState {
   var nameController = TextEditingController();
   var phoneController = TextEditingController();
   var confirmPwdController = TextEditingController();
+
+  
   Future<void> ValidateLogin(BuildContext context)async {
     String email = emailController.text;
     String pwd = pwdController.text;

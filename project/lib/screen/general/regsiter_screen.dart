@@ -7,14 +7,16 @@ import 'package:project/screen/customer/homescreen.dart';
 import 'package:project/screen/general/login_screen.dart';
 
 class RegsiterScreen extends MainState {
+
   DateTime date = DateTime.now();
   String dateP = 'Ngày sinh';
-  @override
+
   void initState() {
     // TODO: implement initState
     super.initState();
 
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -264,6 +266,7 @@ class RegsiterScreen extends MainState {
   var phoneController = TextEditingController();
   var confirmPwdController = TextEditingController();
   var roleController = TextEditingController();
+
  Future<void> ValidateRegister(BuildContext context)async {
    String email = emailController.text;
    String name  = nameController.text;
