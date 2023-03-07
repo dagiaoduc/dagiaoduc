@@ -17,6 +17,7 @@ class AttendanceScreen extends MainState{
   ];*/
   // Option 2
   int _value = 1;
+  int _value1 = 1;
   @override
   Widget build (BuildContext context){
     final x = MediaQuery.of(context).size.width;
@@ -53,7 +54,7 @@ class AttendanceScreen extends MainState{
                       Container(
                         width: x*0.4,
                         padding: EdgeInsets.all(5),
-                        alignment: Alignment.center,
+                        //alignment: Alignment.center,
                         height: 35,
                         decoration:BoxDecoration(
                           color: Colors.white,
@@ -186,7 +187,7 @@ class AttendanceScreen extends MainState{
             Container(
               height: 400,
               child: ListView.builder(
-                itemCount: 15,
+                itemCount: 1,
                 
                 itemBuilder: (context, index) {
                   return Column(
@@ -218,6 +219,53 @@ class AttendanceScreen extends MainState{
                               onChanged: (value){
                                 setState(() {
                                   _value = value!;
+                                });
+                              },
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap:(){
+                              openDialog();
+                            },
+                            child: Container(
+                                width:x*0.3,
+                                alignment: Alignment.center ,
+                                child: Text(
+                                  'demo',
+                                  style: TextStyle(color: Colors.black),
+                                  textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,
+                                  maxLines: 3,)
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(width:x*0.1,alignment: Alignment.center,child: Text('1',style: TextStyle(color: Colors.black),textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,)),
+                          Container(width:x*0.3,alignment: Alignment.center ,child: Text('Nguyễn Văn Lươn',style: TextStyle(color: Colors.black),textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,maxLines: 3,)),
+                          Container(
+                            width:x*0.15,
+                            alignment: Alignment.center ,
+                            child: Radio(
+                              value: 1,
+                              groupValue: _value1,
+                              onChanged: (value){
+                                setState(() {
+                                  _value1 = value!;
+                                });
+                              },
+                            ),
+                          ),
+                          Container(
+                            width:x*0.15,
+                            alignment: Alignment.center ,
+                            child: Radio(
+                              value: 2,
+                              groupValue: _value1,
+                              onChanged: (value){
+                                setState(() {
+                                  _value1 = value!;
                                 });
                               },
                             ),

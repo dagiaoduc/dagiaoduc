@@ -19,7 +19,7 @@ class HomeScreen extends MainState{
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
-                      side: BorderSide(width: 2, color: Colors.grey),
+                      side: BorderSide(width: 2, color: Color.fromRGBO(209, 207, 207, 0)),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
@@ -39,6 +39,20 @@ class HomeScreen extends MainState{
                   )
                 ],
               ),
+              Container(
+
+                height: 100,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.greenAccent,
+                ),
+                margin: EdgeInsets.all(10),
+                child:Column(
+                  children: [
+
+                  ],
+                ),
+              )
             ],
           ),
         ),
