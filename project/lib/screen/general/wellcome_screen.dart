@@ -5,7 +5,7 @@ import 'package:project/components/main_state.dart';
 import 'package:project/screen/general/login_screen.dart';
 
 class WellComeScreen extends MainState{
-  @override
+
   changeScreen(){
     Future.delayed(const Duration(seconds: 5),(){
       pop(context);
@@ -17,8 +17,12 @@ class WellComeScreen extends MainState{
   }
   void initState(){
     changeScreen();
+    setState(() {
+
+    });
     super.initState();
   }
+  @override
   Widget build (BuildContext context){
     return SafeArea(
       child: Container(

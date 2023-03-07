@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project/components/app_screen.dart';
 import 'package:project/components/main_state.dart';
 import 'package:project/screen/customer/homescreen.dart';
+import 'package:project/screen/general/regsiter_screen.dart';
 
 class LoginScreen extends MainState {
   @override
@@ -89,6 +90,11 @@ class LoginScreen extends MainState {
               Container(
                 child: TextButton(
                   onPressed: () {
+                    pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AppScreen<RegsiterScreen>()),
+                    );
                   },
                   child: Text(
                     'Bạn chưa đăng ký tài khoản? Đăng ký',
@@ -113,11 +119,7 @@ class LoginScreen extends MainState {
                   child: const Text('ĐĂNG NHẬP',
                       style: TextStyle(color: Colors.white, fontSize: 18)),
                   onPressed: () {
-                    pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => AppScreen<HomeScreen>()),
-                    );
+                    ValidateLogin(context);
                   },
                 ),
               ),
@@ -166,4 +168,47 @@ class LoginScreen extends MainState {
   var nameController = TextEditingController();
   var phoneController = TextEditingController();
   var confirmPwdController = TextEditingController();
+  Future<void> ValidateLogin(BuildContext context)async {
+    String email = emailController.text;
+    String pwd = pwdController.text;
+    if(email.isEmpty || !email.contains('@') || !email.contains('.') ){
+      return _showMyDialog(context, 'Hãy nhập email đúng định dạng @***.**');
+    }
+    if(pwd.length < 6 ){
+      return _showMyDialog(context, 'Độ dài mật khẩu phải lớn hơn 6 kí tự');
+    } else{
+      pop(context);
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => AppScreen<HomeScreen>()),
+      );
+    }
+
+  }
+  Future<void> _showMyDialog(BuildContext context, String msg) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('THÔNG BÁO LỖI'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(msg),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context, 'Cảm Ơn');
+              },
+              child: const Text('Cảm Ơn'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
