@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project/components/app_screen.dart';
 import 'package:project/components/main_state.dart';
 import 'package:project/screen/customer/homescreen.dart';
+import 'package:project/screen/general/forgot_password_screen.dart';
 import 'package:project/screen/general/regsiter_screen.dart';
 
 class LoginScreen extends MainState {
@@ -88,18 +89,20 @@ class LoginScreen extends MainState {
                 ),
               ),
               Container(
+                alignment: Alignment.centerRight,
+                padding: const EdgeInsets.only(left:  25, right:  25),
                 child: TextButton(
                   onPressed: () {
                     pop(context);
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => AppScreen<RegsiterScreen>()),
+                      MaterialPageRoute(builder: (context) => AppScreen<ForgotPwdScreen>()),
                     );
                   },
                   child: Text(
-                    'Bạn chưa đăng ký tài khoản? Đăng ký',
+                    'Quên mật khẩu?',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 15, color: Colors.redAccent),
+                    style: TextStyle(fontSize: 14, color: Colors.redAccent),
                   ),
                 ),
               ),
@@ -154,7 +157,22 @@ class LoginScreen extends MainState {
                   ],
                 ),
               ),
-
+              Container(
+                child: TextButton(
+                  onPressed: () {
+                    pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AppScreen<RegsiterScreen>()),
+                    );
+                  },
+                  child: Text(
+                    'Bạn chưa đăng ký tài khoản? Đăng ký',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 15, color: Colors.redAccent),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

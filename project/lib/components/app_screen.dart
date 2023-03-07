@@ -5,9 +5,11 @@ import 'package:project/screen/customer/attendance_screen.dart';
 import 'package:project/screen/customer/class_detail_screen.dart';
 import 'package:project/screen/customer/class_list_screen.dart';
 import 'package:project/screen/customer/homescreen.dart';
+import 'package:project/screen/general/forgot_password_screen.dart';
 import 'package:project/screen/general/login_screen.dart';
 import 'package:project/screen/general/regsiter_screen.dart';
 import 'package:project/screen/general/user_infor_screen.dart';
+import 'package:project/screen/general/verifycation.dart';
 import 'package:project/screen/general/wellcome_screen.dart';
 
 class AppScreen<T extends MainState> extends StatelessWidget {
@@ -45,9 +47,12 @@ class AppScreenPage<T extends MainState> extends StatefulWidget {
       return WellComeScreen();
     }else if(T == LoginScreen) {
       return LoginScreen();
-    }
-    else if(T == RegsiterScreen) {
+    } else if(T == RegsiterScreen) {
       return RegsiterScreen();
+    }else if(T == ForgotPwdScreen) {
+      return ForgotPwdScreen();
+    }else if(T == VerifycationScreen()) {
+      return VerifycationScreen();
     }
     return HomeScreen();
   }
