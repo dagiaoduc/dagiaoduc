@@ -171,10 +171,10 @@ class LoginScreen extends MainState {
 
   
   Future<void> ValidateLogin(BuildContext context)async {
-    String email = emailController.text;
+    String phone = phoneController.text;
     String pwd = pwdController.text;
-    if(email.isEmpty || !email.contains('@') || !email.contains('.') ){
-      return _showMyDialog(context, 'Hãy nhập email đúng định dạng @***.**');
+    if(phone.length > 10 || phone.length < 10 ){
+      return _showMyDialog(context, 'Nhập số điện thoại không đúng');
     }
     if(pwd.length < 6 ){
       return _showMyDialog(context, 'Độ dài mật khẩu phải lớn hơn 6 kí tự');
