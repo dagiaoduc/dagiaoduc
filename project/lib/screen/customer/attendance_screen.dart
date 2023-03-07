@@ -201,7 +201,7 @@ class AttendanceScreen extends MainState{
                             width:x*0.15,
                             alignment: Alignment.center ,
                             child: Radio(
-                              value: 0,
+                              value: 1,
                               groupValue: _value,
                               onChanged: (value){
                                 setState(() {
@@ -214,7 +214,7 @@ class AttendanceScreen extends MainState{
                             width:x*0.15,
                             alignment: Alignment.center ,
                             child: Radio(
-                              value: 1,
+                              value: 2,
                               groupValue: _value,
                               onChanged: (value){
                                 setState(() {
