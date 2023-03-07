@@ -42,6 +42,7 @@ class LoginScreen extends MainState {
                     EdgeInsets.only(top: 10, left: 30, bottom: 10, right: 30),
                 child: TextField(
                   controller: phoneController,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.phone),
                     hintText: "Số điện thoại",

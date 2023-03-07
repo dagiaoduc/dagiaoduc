@@ -285,7 +285,7 @@ class RegsiterScreen extends MainState {
    if(confirmpwd != pwd){
      return _showMyDialog(context, 'Nhập xác minh lại minh khẩu chưa giống');
    }
-    if(phone.length > 10 || phone.length < 10 ){
+   if(phone.length > 10 || phone.length < 10 ){
      return _showMyDialog(context, 'Nhập số điện thoại không đúng');
    }else{
      pop(context);
