@@ -36,7 +36,7 @@ class AddStudent extends MainState{
                       },
                       icon: Icon(Icons.arrow_back_ios),
                   ),
-                  Text('Thêm Học Sinh', style: TextStyle(color: Colors.black,fontSize: 25)),
+                  Text('THÊM HỌC SINH', style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.bold)),
                 ],
               ),
               Container(
@@ -47,7 +47,9 @@ class AddStudent extends MainState{
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Họ và Tên:', style: TextStyle(color:Colors.black, fontSize: 20),textAlign: TextAlign.left,),
+                        Container(
+                            padding: EdgeInsets.only(left: 15),
+                            child: Text('Họ và Tên:', style: TextStyle(color:Colors.black, fontSize: 20),textAlign: TextAlign.left,)),
                         Padding(padding: EdgeInsets.only(top: 5)),
                         TextFormField(
                           controller: nameController,
@@ -74,7 +76,9 @@ class AddStudent extends MainState{
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Biệt danh:', style: TextStyle(color:Colors.black, fontSize: 20),textAlign: TextAlign.left,),
+                        Container(
+                            padding: EdgeInsets.only(left: 15),
+                            child: Text('Biệt danh:', style: TextStyle(color:Colors.black, fontSize: 20),textAlign: TextAlign.left,)),
                         Padding(padding: EdgeInsets.only(top: 5)),
                         TextFormField(
                           controller: nicknameController,
@@ -101,7 +105,9 @@ class AddStudent extends MainState{
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Chọn ngày sinh:', style: TextStyle(color:Colors.black, fontSize: 20),textAlign: TextAlign.left,),
+                        Container(
+                            padding: EdgeInsets.only(left: 15),
+                            child: Text('Chọn ngày sinh:', style: TextStyle(color:Colors.black, fontSize: 20),textAlign: TextAlign.left,)),
                         Padding(padding: EdgeInsets.only(top: 5)),
                         Container(
                           decoration:BoxDecoration(
@@ -142,7 +148,9 @@ class AddStudent extends MainState{
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Nhập số điện thoại phụ huynh:', style: TextStyle(color:Colors.black, fontSize: 20),textAlign: TextAlign.left,),
+                        Container(
+                            padding: EdgeInsets.only(left: 15),
+                            child: Text('Nhập số điện thoại phụ huynh:', style: TextStyle(color:Colors.black, fontSize: 20),textAlign: TextAlign.left,)),
                         Padding(padding: EdgeInsets.only(top: 5)),
                         TextField(
                           controller: phoneController,
@@ -171,11 +179,15 @@ class AddStudent extends MainState{
                     Padding(padding: EdgeInsets.only(bottom: 20)),
                     Column(
                       children: [
+                        Container(
+                            padding: EdgeInsets.only(left: 15),
+                            child: Text('Chọn ảnh đại diện:', style: TextStyle(color:Colors.black, fontSize: 20),textAlign: TextAlign.left,)),
+                        Padding(padding: EdgeInsets.only(top: 5)),
                         FormBuilderImagePicker(
                           name: 'photos',
                           displayCustomType: (obj) =>
                           obj is ApiImage ? obj.imageUrl : obj,
-                          decoration: const InputDecoration(labelText: 'Chọn ảnh đại diện',labelStyle: TextStyle(fontSize:28 )),
+                          //decoration: const InputDecoration(labelText: 'Chọn ảnh đại diện',labelStyle: TextStyle(fontSize:28 )),
                           maxImages: 1,
                           previewAutoSizeWidth: true,
                           previewMargin: const EdgeInsetsDirectional.only(end: 8),
@@ -192,13 +204,9 @@ class AddStudent extends MainState{
                         minimumSize: Size(MediaQuery.of(context).size.width, 50),// foreground
                       ),
                       onPressed: (){
-                        pop(context);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => AppScreen<ClassDetailScreen>()),
-                        );
+                        ValidateAddStudent(context);
                       },
-                      child: Text('Cập nhật thông tin', style: TextStyle(color: Colors.white)),
+                      child: Text('Cập nhật thông tin', style: TextStyle(color: Colors.white,fontSize: 18)),
                     )
 
                   ],
