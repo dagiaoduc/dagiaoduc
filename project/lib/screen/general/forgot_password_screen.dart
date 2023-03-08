@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project/components/app_screen.dart';
 import 'package:project/components/main_state.dart';
 import 'package:project/screen/general/login_screen.dart';
-import 'package:project/screen/general/verifycation.dart';
+import 'package:project/screen/general/verifycation_screen.dart';
 
 
 
@@ -75,21 +75,19 @@ class ForgotPwdScreen extends MainState {
                 padding: EdgeInsets.only(top:20,left: 30, right: 30),
                 child: TextField(
                   controller: emailController,
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.email),
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.email_outlined),
                     hintText: "Email",
                     border: InputBorder.none,
                     hintStyle: TextStyle(color: Colors.grey),
-                    contentPadding: const EdgeInsets.all(20.0),
+                    contentPadding: const EdgeInsets.all(15.0),
                     focusedBorder: OutlineInputBorder(
-                      borderSide:
-                      BorderSide(color: Colors.grey, width: 1.0),
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      borderSide: BorderSide(color: Colors.greenAccent, width: 1.0),
+                      borderRadius: BorderRadius.circular(25),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderSide:
-                      BorderSide(color: Colors.grey, width: 1.0),
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      borderSide: BorderSide(color: Colors.greenAccent, width: 1.0),
+                      borderRadius: BorderRadius.circular(25),
                     ),
                   ),
                   style: TextStyle(
@@ -103,15 +101,15 @@ class ForgotPwdScreen extends MainState {
                 padding: const EdgeInsets.only(left:  30, right:  30),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepOrangeAccent,
+                    backgroundColor: Colors.greenAccent,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
-                  child: const Text('YÊU CẦU LẤY LẠI MẬT KHẨU',
+                  child:  Text('YÊU CẦU LẤY LẠI MẬT KHẨU',
                       style: TextStyle(color: Colors.white, fontSize: 18)),
                   onPressed: () {
-                    resetPwd(context);
+                    //resetPwd(context);
                     pop(context);
                     Navigator.push(
                       context,

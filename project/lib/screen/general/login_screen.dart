@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:project/components/app_screen.dart';
 import 'package:project/components/main_state.dart';
 import 'package:project/screen/customer/homescreen.dart';
@@ -141,7 +142,7 @@ class LoginScreen extends MainState {
                   children: [
                     IconButton(
                         onPressed: (){
-
+                          _loginFacebook();
                         },
                         icon: Image.network('https://demo.ziczacvn.com/uploads/stores/160/2023/03/facebook-logo-2019.png')),
                     IconButton(
@@ -229,6 +230,59 @@ class LoginScreen extends MainState {
           ],
         );
       },
+    );
+  }
+  _loginFacebook() async {
+    // Create an instance of FacebookLogin
+    final fb = FacebookLogin();
+
+// Log in
+    final res = await fb.logIn(permissions: [
+      FacebookPermission.publicProfile,
+      FacebookPermission.email,
+    ]);
+
+// Check result status
+    switch (res.status) {
+      case FacebookLoginStatus.success:
+      // Logged in
+
+      // Send access token to server for validation and auth
+        final FacebookAccessToken? accessToken = res.accessToken;
+        print('Access token: ${accessToken!.token}');
+
+        // Get profile data
+        final profile = await fb.getUserProfile();
+        print('Hello, ${profile!.name}! Your ID: ${profile!.userId}');
+
+        // Get user profile image url
+        final imageUrl = await fb.getProfileImageUrl(width: 100);
+        print('Your profile image: $imageUrl');
+
+        // Get email (since we request email permission)
+        final email = await fb.getUserEmail();
+        // But user can decline permission
+        if (email != null)
+          print('And your email is $email');
+        ChangeScreen(context);
+        break;
+      case FacebookLoginStatus.cancel:
+      // User cancel log in
+        break;
+      case FacebookLoginStatus.error:
+      // Log in failed
+        print('Error while log in: ${res.error}');
+        break;
+    }
+
+
+
+  }
+  void ChangeScreen(BuildContext context){
+    pop(context);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => AppScreen<HomeScreen>()),
     );
   }
 }

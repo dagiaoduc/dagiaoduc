@@ -158,7 +158,7 @@ class VerifycationScreen extends MainState {
                       margin: const EdgeInsets.only(top: 35),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.deepOrangeAccent,
+                          backgroundColor: Colors.greenAccent,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           ),

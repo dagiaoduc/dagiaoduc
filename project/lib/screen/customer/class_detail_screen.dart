@@ -158,7 +158,7 @@ class ClassDetailScreen extends MainState {
           ),
         ),
       ),
-      bottomNavigationBar: getBottomTab(context, 2),
+      bottomNavigationBar: getBottomTab(context, 3),
     );
   }
 }
