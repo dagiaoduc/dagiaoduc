@@ -129,7 +129,18 @@ class LoginScreen extends MainState {
               ),
               Container(
                 margin: const EdgeInsets.only(top: 10),
-                child: Text('OR',style: TextStyle(color: Colors.red, fontSize: 20, fontWeight: FontWeight.bold),),
+                child: Stack(
+                  alignment: Alignment.center,
+                    children: [
+                      Divider(color: Colors.cyanAccent, thickness: 1,),
+                      Container(
+                        color: Colors.white,
+                        padding: const EdgeInsets.only(left:  25, right:  25),
+                          child: Text('HOẶC ĐĂNG NHẬP THEO NỀN TẢNG',style: TextStyle(color: Colors.red, fontSize: 10, fontWeight: FontWeight.bold),),
+                      )
+                    ],
+
+                ),
               ),
 
               Container(
