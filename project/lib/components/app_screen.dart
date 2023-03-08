@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:project/components/main_state.dart';
+import 'package:project/screen/customer/add_student_screen.dart';
 import 'package:project/screen/customer/attendance_screen.dart';
 import 'package:project/screen/customer/class_detail_screen.dart';
 import 'package:project/screen/customer/class_list_screen.dart';
@@ -53,6 +54,8 @@ class AppScreenPage<T extends MainState> extends StatefulWidget {
       return ForgotPwdScreen();
     }else if(T == VerifycationScreen) {
       return VerifycationScreen();
+    }else if(T == AddStudent) {
+      return AddStudent();
     }
     return HomeScreen();
   }

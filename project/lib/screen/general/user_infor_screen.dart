@@ -9,6 +9,7 @@ class UserInforScreen extends MainState{
       body: Container(
         color: Colors.orange,
       ),
+      bottomNavigationBar: getBottomTab(context, 4),
     );
   }
 }
