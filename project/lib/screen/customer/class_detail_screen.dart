@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:project/components/main_state.dart';
+import 'package:project/models/utils/option_model.dart';
 
 class ClassDetailScreen extends MainState {
+  String dropdownValue = "1";
+  List<OptionModel>stsList= [
+    OptionModel(value: "1", title: "Thêm lớp mới"),
+    OptionModel(value: "2", title: "Sửa tên lớp"),
+    OptionModel(value: "3", title: "Tham gia lớp"),
+    OptionModel(value: "4", title: "Xóa"),
+  ];
+
   @override
   Widget build(BuildContext context) {
     final x = MediaQuery.of(context).size.width;
@@ -11,8 +20,8 @@ class ClassDetailScreen extends MainState {
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
+            width: x,
+            height:y,
             decoration: BoxDecoration(
               color: Colors.white,
             ),
@@ -22,10 +31,11 @@ class ClassDetailScreen extends MainState {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    alignment: Alignment.center,
+                    alignment: Alignment.centerLeft,
                     height: 50,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
                           alignment: Alignment.centerLeft,
@@ -35,7 +45,7 @@ class ClassDetailScreen extends MainState {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.only(right: 40),
+                          padding: EdgeInsets.only(right: 30),
                           alignment: Alignment.centerLeft,
                           child: Text("DANH SÁCH HỌC SINH",
                               textAlign: TextAlign.center,
@@ -43,13 +53,39 @@ class ClassDetailScreen extends MainState {
                               maxLines: 1,
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500)),
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton(
+                              icon: Icon(Icons.keyboard_control, color: Colors.blueAccent ,size: 20),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  dropdownValue = newValue!;
+                                });
+                              },
+                              items: stsList
+                                  .map<DropdownMenuItem<String>>(
+                                    (item) {
+                                  return DropdownMenuItem<String>(
+                                    value: item.value,
+                                    child: TextButton(
+                                       child:Text('${item.title}'),
+                                      onPressed: (){},
+                                    ),
+                                  );
+                                },
+                              ).toList(),
+                            ),
+                          ),
                         ),
                       ],
                     ),
                   ),
                   Card(
+                    color:  Colors.white70,
                     child: TextField(
                       //controller: myController,
                       autofocus: false,
@@ -85,15 +121,18 @@ class ClassDetailScreen extends MainState {
                     child: Container(
                       color: Color(0xffFFFFFF),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            'Thêm học sinh',
+                          Container(
+                            padding: EdgeInsets.only(left: 20),
+                            child:  Text(
+                            'Giáo Viên Phụ Trách:',
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                              color: Colors.orange,
+                              color: Colors.black,
                               fontSize: 18,
                             ),
+                          ),
                           ),
                           IconButton(
                             onPressed: () {
@@ -109,8 +148,8 @@ class ClassDetailScreen extends MainState {
                                         AppScreen<EditStore>()),
                               );*/
                             },
-                            icon: Icon(Icons.add_circle_outline_outlined,
-                                color: Color(0xffFC6F65)),
+                            icon: Icon(Icons.add_circle_outlined,
+                                color: Colors.greenAccent,)
                           ),
                         ],
                       ),
@@ -121,37 +160,209 @@ class ClassDetailScreen extends MainState {
                     decoration:BoxDecoration(
                       color: Colors.white60,
                       border: Border.all(
-                        color: Colors.grey,
+                        color: Colors.lightGreenAccent,
                       ),
                       borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.lightGreenAccent,
+                          offset: const Offset(
+                            0.0,
+                            2.0,
+                          ),
+                          blurRadius: 1.0,
+                          spreadRadius: 1.0,
+                        ), //BoxShadow
+                        BoxShadow(
+                          color: Colors.white,
+                          offset: const Offset(0.0, 0.0),
+                          blurRadius: 0.0,
+                          spreadRadius: 0.0,
+                        ), //
+                      ]
                     ),
-                    height: 120,
+                    height: y*0.2,
                     width: x,
                     margin: EdgeInsets.all(10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(10),
-                          child: Text('GIÁO VIÊN PHỤ TRÁCH:', style: TextStyle(color:Colors.black,fontSize: 13, fontWeight: FontWeight.bold)),
-                        ),
-                        Container(
-                          height: 60,
-                          child: ListView.builder(
-                              padding: const EdgeInsets.all(10),
-                              itemCount: 3,
-                              itemBuilder: (context, index){
-                                return Container(
-                                  height: 20,
-                                  child: Text('NGuyễn Hoàng Phương Nam', style: TextStyle(color:Colors.black,fontSize: 13, fontWeight: FontWeight.bold)),
-                                );
-                              },
-                          ),
-                        ),
-                      ],
+                    child: Container(
+                      child: ListView.builder(
+                        padding: const EdgeInsets.all(10),
+                        itemCount: 3,
+                        itemBuilder: (context, index){
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.only(bottom: 5),
+                                    child:  FadeInImage(
+                                      image: NetworkImage('https://demo.ziczacvn.com/uploads/stores/160/2022/12/2022-12-17-1049-rectangle-98.png'),
+                                      placeholder: NetworkImage('https://demo.ziczacvn.com/uploads/stores/160/2022/12/2022-12-17-1049-rectangle-98.png'),
+                                      fit: BoxFit.fill,
+                                      alignment: Alignment.center,
+                                      width: 35,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                  ),
+                                  Container(
+                                    width: x*0.2,
+                                    child: Text('Trần Vương Hoàng Nam',
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.bold
+                                      ), ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                  ),
+                                  Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          height: 30,
+                                          width: 35,
+                                          decoration: BoxDecoration(
+                                              color: Colors.redAccent,
+                                              borderRadius:
+                                              BorderRadius.circular(10)),
+                                          child: TextButton(
+                                            onPressed: () {
+                                              //EditShipperDetail(context, item);
+                                            },
+                                            child: Text(
+                                              'Xóa',
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(
+                                                fontSize: 10,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                          EdgeInsets.fromLTRB(0, 0, 3, 0),
+                                        ),
+                                        Container(
+                                          height: 30,
+                                          width: 65,
+                                          decoration: BoxDecoration(
+                                              color: Colors.blueAccent,
+                                              borderRadius:
+                                              BorderRadius.circular(10)),
+                                          child: TextButton(
+                                            onPressed: () {
+                                              //EditShipperDetail(context, item);
+                                            },
+                                            child: Text(
+                                              'Phân quyền',
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(
+                                                fontSize: 10,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ),Padding(
+                                          padding:
+                                          EdgeInsets.fromLTRB(0, 0, 3, 0),
+                                        ),
+                                        Container(
+                                          height: 30,
+                                          width: 55,
+                                          decoration: BoxDecoration(
+                                              color: Colors.green,
+                                              borderRadius:
+                                              BorderRadius.circular(10)),
+                                          child: TextButton(
+                                            onPressed: () {
+                                              //EditShipperDetail(context, item);
+                                            },
+                                            child: Text(
+                                              'Đang đợi',
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(
+                                                fontSize: 10,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+
+                            ],
+
+                          );
+                        },
+                      ),
                     ),
                   ),
+                  GestureDetector(
+                    onTap: () {
+                      /*globals.currentShop = null;
+                      globals.currentShipper = null;
+                      WalletHistory.reset();
 
+                      pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AppScreen<EditStore>()),
+                      );*/
+                    },
+                    child: Container(
+                      color: Color(0xffFFFFFF),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.only(left: 20),
+                            child:  Text(
+                              'Danh Sách Học Sinh',
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                /* globals.currentShop = null;
+                              globals.currentShipper = null;
+                              WalletHistory.reset();
+
+                              pop(context);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        AppScreen<EditStore>()),
+                              );*/
+                              },
+                              icon: Icon(Icons.add_circle_outlined,
+                                color: Colors.greenAccent,)
+                          ),
+
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
