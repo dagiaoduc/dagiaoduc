@@ -363,6 +363,98 @@ class ClassDetailScreen extends MainState {
                       ),
                     ),
                   ),
+                  Container(
+                    height: y*0.4,
+                    width: x,
+                    child: ListView.builder(
+                      itemCount: 20,
+                      itemBuilder: (context, index){
+                        return Card(
+                          shape: RoundedRectangleBorder( //<-- SEE HERE
+                            side: BorderSide(
+                              color: Colors.lightGreenAccent,
+                            ),
+                            borderRadius: BorderRadius.circular(10)
+                          ),
+                          child:  Container(
+                            child: ListTile(
+                              title: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        child:  FadeInImage(
+                                          image: NetworkImage('https://demo.ziczacvn.com/uploads/stores/160/2022/12/2022-12-17-1049-rectangle-98.png'),
+                                          placeholder: NetworkImage('https://demo.ziczacvn.com/uploads/stores/160/2022/12/2022-12-17-1049-rectangle-98.png'),
+                                          fit: BoxFit.fill,
+                                          alignment: Alignment.center,
+                                          width: 35,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                      ),
+                                      Container(
+                                        width: x*0.35,
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              child: Text('Trần Vương Hoàng Nam',
+                                                maxLines: 2,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 15,
+                                                    fontWeight: FontWeight.bold
+                                                ), ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                                            ),
+                                            Container(
+                                              child: Text('Nicknameasdasas',
+                                                maxLines: 2,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.bold
+                                                ), ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                      ),
+                                      Container(
+                                        child: Text('13/06/1991',
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold
+                                          ), ),
+                                      ),
+                                    ],
+                                  ),
+                                  
+                                ],
+                              ),
+                              trailing:  Icon(Icons.arrow_drop_down_rounded),
+                              onTap: (){
+
+                              },
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),
