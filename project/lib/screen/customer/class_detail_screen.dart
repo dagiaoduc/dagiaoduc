@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:project/components/app_screen.dart';
 import 'package:project/components/main_state.dart';
 import 'package:project/models/utils/option_model.dart';
+import 'package:project/screen/customer/add_student_screen.dart';
 
 class ClassDetailScreen extends MainState {
   String dropdownValue = "1";
@@ -345,15 +347,15 @@ class ClassDetailScreen extends MainState {
                               onPressed: () {
                                 /* globals.currentShop = null;
                               globals.currentShipper = null;
-                              WalletHistory.reset();
+                              WalletHistory.reset();*/
 
                               pop(context);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        AppScreen<EditStore>()),
-                              );*/
+                                        AppScreen<AddStudent>()),
+                              );
                               },
                               icon: Icon(Icons.add_circle_outlined,
                                 color: Colors.greenAccent,)
