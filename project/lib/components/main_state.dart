@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:project/components/app_screen.dart';
+import 'package:project/screen/customer/add_student_screen.dart';
 import 'package:project/screen/customer/attendance_screen.dart';
 import 'package:project/screen/customer/class_detail_screen.dart';
 import 'package:project/screen/customer/class_list_screen.dart';
@@ -48,7 +49,7 @@ abstract class MainState extends State<AppScreenPage>{
               pop(context);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AppScreen<ClassListScreen>()),
+                MaterialPageRoute(builder: (context) => AppScreen<ClassDetailScreen>()),
               );
             },
           ),
@@ -74,7 +75,7 @@ abstract class MainState extends State<AppScreenPage>{
         BottomNavigationBarItem(
           icon: IconButton(
             icon: Icon(
-              Icons.campaign_rounded,
+              Icons.folder,
               color: (index == 3) ? Colors.deepOrangeAccent: Colors.black45,
             ),
             onPressed: () {
@@ -82,11 +83,11 @@ abstract class MainState extends State<AppScreenPage>{
               pop(context);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AppScreen<ClassDetailScreen>()),
+                MaterialPageRoute(builder: (context) => AppScreen<AddStudent>()),
               );
             },
           ),
-          label: 'Thông báo',
+          label: 'Thư viện ảnh',
         ),
         BottomNavigationBarItem(
           icon: IconButton(

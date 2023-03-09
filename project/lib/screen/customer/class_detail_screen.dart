@@ -1,17 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:project/components/app_screen.dart';
 import 'package:project/components/main_state.dart';
+import 'package:project/models/packages/class_list.dart';
 import 'package:project/models/utils/option_model.dart';
 import 'package:project/screen/customer/add_student_screen.dart';
 
 class ClassDetailScreen extends MainState {
   String dropdownValue = "1";
-  List<OptionModel>stsList= [
+  List<OptionModel> stsList = [
     OptionModel(value: "1", title: "Thêm lớp mới"),
     OptionModel(value: "2", title: "Sửa tên lớp"),
     OptionModel(value: "3", title: "Tham gia lớp"),
     OptionModel(value: "4", title: "Xóa"),
   ];
+  List<Class> classList = [
+    Class(id: 1, classname:'Hoa Hong'),
+    Class(id: 2, classname: 'Hoa Ban Trang'),
+    Class(id: 3, classname: 'Hoa Ban Trang1'),
+    Class(id: 4, classname: 'Hoa Ban Trang2'),
+    Class(id: 5, classname: 'Hoa Ban Trang3213131231'),
+    Class(id: 6, classname: 'Hoa Ban Trang4'),
+    Class(id: 7, classname: 'Hoa Ban Trang5'),
+    Class(id: 8, classname: 'Hoa Ban Trang5'),
+    Class(id: 9, classname: 'Hoa Ban Trang5'),
+    Class(id: 10, classname: 'Hoa Ban Trang5'),
+    Class(id: 11, classname: 'Hoa Ban Trang5'),
+  ];
+late dynamic current = 0;
+
+  late bool isVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +40,7 @@ class ClassDetailScreen extends MainState {
           scrollDirection: Axis.vertical,
           child: Container(
             width: x,
-            height:y,
+            height: y,
             decoration: BoxDecoration(
               color: Colors.white,
             ),
@@ -32,6 +49,35 @@ class ClassDetailScreen extends MainState {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  Center(
+                    child: Container(
+                      width: x - 180,
+                      color: Colors.lightGreenAccent,
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButtonFormField<dynamic>(
+                          isExpanded: true,
+                          value: dropdownValue,
+                          items: stsList
+                              .map(
+                                (item) => DropdownMenuItem<dynamic>(
+                                  value: item.value,
+                                  child: Text(
+                                    item.title,
+                                    textAlign: TextAlign.center,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                          onChanged: (v) => setState(() => dropdownValue = v),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  ),
                   Container(
                     alignment: Alignment.centerLeft,
                     height: 50,
@@ -62,20 +108,20 @@ class ClassDetailScreen extends MainState {
                           alignment: Alignment.centerLeft,
                           child: DropdownButtonHideUnderline(
                             child: DropdownButton(
-                              icon: Icon(Icons.keyboard_control, color: Colors.blueAccent ,size: 20),
+                              icon: Icon(Icons.keyboard_control,
+                                  color: Colors.blueAccent, size: 20),
                               onChanged: (String? newValue) {
                                 setState(() {
                                   dropdownValue = newValue!;
                                 });
                               },
-                              items: stsList
-                                  .map<DropdownMenuItem<String>>(
-                                    (item) {
+                              items: stsList.map<DropdownMenuItem<String>>(
+                                (item) {
                                   return DropdownMenuItem<String>(
                                     value: item.value,
                                     child: TextButton(
-                                       child:Text('${item.title}'),
-                                      onPressed: (){},
+                                      child: Text('${item.title}'),
+                                      onPressed: () {},
                                     ),
                                   );
                                 },
@@ -87,7 +133,7 @@ class ClassDetailScreen extends MainState {
                     ),
                   ),
                   Card(
-                    color:  Colors.white70,
+                    color: Colors.white70,
                     child: TextField(
                       //controller: myController,
                       autofocus: false,
@@ -127,18 +173,18 @@ class ClassDetailScreen extends MainState {
                         children: [
                           Container(
                             padding: EdgeInsets.only(left: 20),
-                            child:  Text(
-                            'Giáo Viên Phụ Trách:',
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
+                            child: Text(
+                              'Giáo Viên Phụ Trách:',
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                              ),
                             ),
                           ),
-                          ),
                           IconButton(
-                            onPressed: () {
-                             /* globals.currentShop = null;
+                              onPressed: () {
+                                /* globals.currentShop = null;
                               globals.currentShipper = null;
                               WalletHistory.reset();
 
@@ -149,60 +195,62 @@ class ClassDetailScreen extends MainState {
                                     builder: (context) =>
                                         AppScreen<EditStore>()),
                               );*/
-                            },
-                            icon: Icon(Icons.add_circle_outlined,
-                                color: Colors.greenAccent,)
-                          ),
+                              },
+                              icon: Icon(
+                                Icons.add_circle_outlined,
+                                color: Colors.greenAccent,
+                              )),
                         ],
                       ),
                     ),
                   ),
-
                   Container(
-                    decoration:BoxDecoration(
-                      color: Colors.white60,
-                      border: Border.all(
-                        color: Colors.lightGreenAccent,
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
+                    decoration: BoxDecoration(
+                        color: Colors.white60,
+                        border: Border.all(
                           color: Colors.lightGreenAccent,
-                          offset: const Offset(
-                            0.0,
-                            2.0,
-                          ),
-                          blurRadius: 1.0,
-                          spreadRadius: 1.0,
-                        ), //BoxShadow
-                        BoxShadow(
-                          color: Colors.white,
-                          offset: const Offset(0.0, 0.0),
-                          blurRadius: 0.0,
-                          spreadRadius: 0.0,
-                        ), //
-                      ]
-                    ),
-                    height: y*0.2,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.lightGreenAccent,
+                            offset: const Offset(
+                              0.0,
+                              2.0,
+                            ),
+                            blurRadius: 1.0,
+                            spreadRadius: 1.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.white,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //
+                        ]),
+                    height: y * 0.2,
                     width: x,
                     margin: EdgeInsets.all(10),
                     child: Container(
                       child: ListView.builder(
                         padding: const EdgeInsets.all(10),
                         itemCount: 3,
-                        itemBuilder: (context, index){
+                        itemBuilder: (context, index) {
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Container(
                                     padding: EdgeInsets.only(bottom: 5),
-                                    child:  FadeInImage(
-                                      image: NetworkImage('https://demo.ziczacvn.com/uploads/stores/160/2022/12/2022-12-17-1049-rectangle-98.png'),
-                                      placeholder: NetworkImage('https://demo.ziczacvn.com/uploads/stores/160/2022/12/2022-12-17-1049-rectangle-98.png'),
+                                    child: FadeInImage(
+                                      image: NetworkImage(
+                                          'https://demo.ziczacvn.com/uploads/stores/160/2022/12/2022-12-17-1049-rectangle-98.png'),
+                                      placeholder: NetworkImage(
+                                          'https://demo.ziczacvn.com/uploads/stores/160/2022/12/2022-12-17-1049-rectangle-98.png'),
                                       fit: BoxFit.fill,
                                       alignment: Alignment.center,
                                       width: 35,
@@ -212,15 +260,16 @@ class ClassDetailScreen extends MainState {
                                     padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
                                   ),
                                   Container(
-                                    width: x*0.2,
-                                    child: Text('Trần Vương Hoàng Nam',
+                                    width: x * 0.2,
+                                    child: Text(
+                                      'Trần Vương Hoàng Nam',
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.bold
-                                      ), ),
+                                          color: Colors.black,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.bold),
+                                    ),
                                   ),
                                   Padding(
                                     padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
@@ -228,7 +277,7 @@ class ClassDetailScreen extends MainState {
                                   Container(
                                     child: Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Container(
                                           height: 30,
@@ -236,7 +285,7 @@ class ClassDetailScreen extends MainState {
                                           decoration: BoxDecoration(
                                               color: Colors.redAccent,
                                               borderRadius:
-                                              BorderRadius.circular(10)),
+                                                  BorderRadius.circular(10)),
                                           child: TextButton(
                                             onPressed: () {
                                               //EditShipperDetail(context, item);
@@ -253,7 +302,7 @@ class ClassDetailScreen extends MainState {
                                         ),
                                         Padding(
                                           padding:
-                                          EdgeInsets.fromLTRB(0, 0, 3, 0),
+                                              EdgeInsets.fromLTRB(0, 0, 3, 0),
                                         ),
                                         Container(
                                           height: 30,
@@ -261,7 +310,7 @@ class ClassDetailScreen extends MainState {
                                           decoration: BoxDecoration(
                                               color: Colors.blueAccent,
                                               borderRadius:
-                                              BorderRadius.circular(10)),
+                                                  BorderRadius.circular(10)),
                                           child: TextButton(
                                             onPressed: () {
                                               //EditShipperDetail(context, item);
@@ -275,9 +324,10 @@ class ClassDetailScreen extends MainState {
                                               ),
                                             ),
                                           ),
-                                        ),Padding(
+                                        ),
+                                        Padding(
                                           padding:
-                                          EdgeInsets.fromLTRB(0, 0, 3, 0),
+                                              EdgeInsets.fromLTRB(0, 0, 3, 0),
                                         ),
                                         Container(
                                           height: 30,
@@ -285,7 +335,7 @@ class ClassDetailScreen extends MainState {
                                           decoration: BoxDecoration(
                                               color: Colors.green,
                                               borderRadius:
-                                              BorderRadius.circular(10)),
+                                                  BorderRadius.circular(10)),
                                           child: TextButton(
                                             onPressed: () {
                                               //EditShipperDetail(context, item);
@@ -300,15 +350,12 @@ class ClassDetailScreen extends MainState {
                                             ),
                                           ),
                                         ),
-
                                       ],
                                     ),
                                   )
                                 ],
                               ),
-
                             ],
-
                           );
                         },
                       ),
@@ -334,7 +381,7 @@ class ClassDetailScreen extends MainState {
                         children: [
                           Container(
                             padding: EdgeInsets.only(left: 20),
-                            child:  Text(
+                            child: Text(
                               'Danh Sách Học Sinh',
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
@@ -349,109 +396,120 @@ class ClassDetailScreen extends MainState {
                               globals.currentShipper = null;
                               WalletHistory.reset();*/
 
-                              pop(context);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        AppScreen<AddStudent>()),
-                              );
+                                pop(context);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          AppScreen<AddStudent>()),
+                                );
                               },
-                              icon: Icon(Icons.add_circle_outlined,
-                                color: Colors.greenAccent,)
-                          ),
-
+                              icon: Icon(
+                                Icons.add_circle_outlined,
+                                color: Colors.greenAccent,
+                              )),
                         ],
                       ),
                     ),
                   ),
                   Container(
-                    height: y*0.4,
+                    height: y * 0.35,
                     width: x,
                     child: ListView.builder(
-                      itemCount: 20,
-                      itemBuilder: (context, index){
+                      itemCount: classList == null ? 0 :classList.length,
+                      itemBuilder: (context, index) {
+                        Class cls = classList[index];
                         return Card(
-                          shape: RoundedRectangleBorder( //<-- SEE HERE
-                            side: BorderSide(
-                              color: Colors.lightGreenAccent,
-                            ),
-                            borderRadius: BorderRadius.circular(10)
-                          ),
-                          child:  Container(
-                            child: ListTile(
-                              title: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                          shape: RoundedRectangleBorder(
+                              //<-- SEE HERE
+                              side: BorderSide(
+                                color: Colors.lightGreenAccent,
+                              ),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Column(
+                            children: [
+                              Container(
+                                child: ListTile(
+                                  leading: Container(
+                                    child: FadeInImage(
+                                      image: NetworkImage(
+                                          'https://demo.ziczacvn.com/uploads/stores/160/2022/12/2022-12-17-1049-rectangle-98.png'),
+                                      placeholder: NetworkImage(
+                                          'https://demo.ziczacvn.com/uploads/stores/160/2022/12/2022-12-17-1049-rectangle-98.png'),
+                                      fit: BoxFit.fill,
+                                      alignment: Alignment.center,
+                                      width: 35,
+                                    ),
+                                  ),
+                                  title: Column(
                                     children: [
-                                      Container(
-                                        child:  FadeInImage(
-                                          image: NetworkImage('https://demo.ziczacvn.com/uploads/stores/160/2022/12/2022-12-17-1049-rectangle-98.png'),
-                                          placeholder: NetworkImage('https://demo.ziczacvn.com/uploads/stores/160/2022/12/2022-12-17-1049-rectangle-98.png'),
-                                          fit: BoxFit.fill,
-                                          alignment: Alignment.center,
-                                          width: 35,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                                      ),
-                                      Container(
-                                        width: x*0.35,
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              child: Text('Trần Vương Hoàng Nam',
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 15,
-                                                    fontWeight: FontWeight.bold
-                                                ), ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            width: x * 0.35,
+                                            child: Text(
+                                              '${cls.classname}',
+                                              maxLines: 2,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold),
                                             ),
-                                            Padding(
-                                              padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                          ),
+                                          Container(
+                                            child: Text(
+                                              '13/06/1991',
+                                              maxLines: 2,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold),
                                             ),
-                                            Container(
-                                              child: Text('Nicknameasdasas',
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.bold
-                                                ), ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                                      ),
-                                      Container(
-                                        child: Text('13/06/1991',
-                                          maxLines: 2,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold
-                                          ), ),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                  
-                                ],
-                              ),
-                              trailing:  Icon(Icons.arrow_drop_down_rounded),
-                              onTap: (){
+                                  subtitle: Container(
+                                    padding:
+                                    EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                    child: Text(
+                                      'Nicknameasdasas',
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  trailing: Icon( Icons.arrow_drop_down),
+                                  onTap: () {
+                                      isVisible =!isVisible;
+                                    setState(() {
 
-                              },
-                            ),
+                                    });
+                                  },
+                                ),
+                              ),
+                              Visibility(
+                                visible : isVisible,
+
+                                  child: Container(
+                                    child: Text(cls.classname),
+                                  )
+                              ),
+                            ],
                           ),
                         );
                       },
@@ -463,7 +521,7 @@ class ClassDetailScreen extends MainState {
           ),
         ),
       ),
-      bottomNavigationBar: getBottomTab(context, 3),
+      bottomNavigationBar: getBottomTab(context, 1),
     );
   }
 }
