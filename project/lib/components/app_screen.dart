@@ -1,10 +1,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:project/components/main_state.dart';
+import 'package:project/screen/customer/Image_detail.dart';
 import 'package:project/screen/customer/add_student_screen.dart';
 import 'package:project/screen/customer/attendance_screen.dart';
 import 'package:project/screen/customer/class_detail_screen.dart';
 import 'package:project/screen/customer/class_list_screen.dart';
+import 'package:project/screen/customer/folder_detail.dart';
+import 'package:project/screen/customer/gallery_screen.dart';
 import 'package:project/screen/customer/homescreen.dart';
 import 'package:project/screen/general/forgot_password_screen.dart';
 import 'package:project/screen/general/login_screen.dart';
@@ -56,6 +59,12 @@ class AppScreenPage<T extends MainState> extends StatefulWidget {
       return VerifycationScreen();
     }else if(T == AddStudent) {
       return AddStudent();
+    }else if(T == GalleryScreen) {
+      return GalleryScreen();
+    }else if(T == FolderDetail) {
+      return FolderDetail();
+    }else if(T == ImageDetail) {
+      return ImageDetail();
     }
     return HomeScreen();
   }

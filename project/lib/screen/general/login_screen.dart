@@ -3,6 +3,7 @@ import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:project/components/app_screen.dart';
 import 'package:project/components/main_state.dart';
 import 'package:project/screen/customer/homescreen.dart';
+import 'package:project/screen/general/auth_service.dart';
 import 'package:project/screen/general/forgot_password_screen.dart';
 import 'package:project/screen/general/regsiter_screen.dart';
 
@@ -128,6 +129,7 @@ class LoginScreen extends MainState {
                   },
                 ),
               ),
+              Padding(padding: EdgeInsets.only(bottom: 10)),
               Container(
                 margin: const EdgeInsets.only(top: 10),
                 child: Stack(
@@ -163,13 +165,18 @@ class LoginScreen extends MainState {
                         icon: Image.network('https://demo.ziczacvn.com/uploads/stores/160/2023/03/unnamed.png')),
                     IconButton(
                         onPressed: (){
+                          AuthService().signInWithGoogle();
+                        },
+                        icon: Image.network('https://demo.ziczacvn.com/uploads/stores/160/2023/03/gg.png')),
+                    IconButton(
+                        onPressed: (){
 
                         },
-                        icon: Image.network('https://demo.ziczacvn.com/uploads/stores/160/2023/03/unnamed-1.png')),
-
+                        icon: Image.network('https://demo.ziczacvn.com/uploads/stores/160/2023/03/apple-logo.png')),
                   ],
                 ),
               ),
+              Padding(padding: EdgeInsets.only(bottom: 10)),
               Container(
                 child: TextButton(
                   onPressed: () {

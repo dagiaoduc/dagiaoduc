@@ -278,7 +278,7 @@ class UserInforScreen extends MainState{
                                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                                     children: [
                                       Expanded(
-                                        flex: 3,
+                                        flex: 4,
                                         child: ElevatedButton(
                                           style: ElevatedButton.styleFrom(
                                             primary: Colors.red, // background
@@ -292,25 +292,10 @@ class UserInforScreen extends MainState{
 
                                         ),
                                       ),
-                                      Padding(padding: EdgeInsets.only(left: 3)),
-                                      Expanded(
-                                        flex: 3,
-                                        child: ElevatedButton(
-                                          style: ElevatedButton.styleFrom(
-                                            primary: Colors.orangeAccent, // background
-                                            onPrimary: Colors.white,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(20),
-                                            ),
-                                          ),
-                                          onPressed: (){},
-                                          child: Text('Điểm danh' ,textAlign: TextAlign.center,),
+                                      Padding(padding: EdgeInsets.only(left: 7)),
 
-                                        ),
-                                      ),
-                                      Padding(padding: EdgeInsets.only(left: 3)),
                                       Expanded(
-                                        flex: 3,
+                                        flex: 4,
                                         child: ElevatedButton(
                                           style: ElevatedButton.styleFrom(
                                             primary: Colors.greenAccent , // background

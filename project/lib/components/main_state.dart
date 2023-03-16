@@ -5,6 +5,7 @@ import 'package:project/screen/customer/add_student_screen.dart';
 import 'package:project/screen/customer/attendance_screen.dart';
 import 'package:project/screen/customer/class_detail_screen.dart';
 import 'package:project/screen/customer/class_list_screen.dart';
+import 'package:project/screen/customer/gallery_screen.dart';
 import 'package:project/screen/customer/homescreen.dart';
 import 'package:project/screen/general/user_infor_screen.dart';
 
@@ -83,7 +84,7 @@ abstract class MainState extends State<AppScreenPage>{
               pop(context);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AppScreen<AddStudent>()),
+                MaterialPageRoute(builder: (context) => AppScreen<GalleryScreen>()),
               );
             },
           ),
