@@ -528,7 +528,7 @@ packages:
     source: hosted
     version: "2.1.4"
   sign_in_with_apple:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: sign_in_with_apple
       url: "https://pub.dartlang.org"

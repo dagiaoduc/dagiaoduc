@@ -50,6 +50,7 @@ dependencies:
   stacked_firebase_auth: ^2.19.1
   google_sign_in: ^6.0.2
   firebase_core: ^2.7.1
+  sign_in_with_apple: ^4.3.0
 
 dev_dependencies:
   flutter_test:

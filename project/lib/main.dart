@@ -6,6 +6,7 @@ import 'package:project/screen/general/login_screen.dart';
 import 'package:project/screen/general/regsiter_screen.dart';
 import 'package:project/screen/general/wellcome_screen.dart';
 
+
 void main() async{
 
   //WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();

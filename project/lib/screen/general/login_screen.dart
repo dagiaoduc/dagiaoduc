@@ -170,7 +170,7 @@ class LoginScreen extends MainState {
                         icon: Image.network('https://demo.ziczacvn.com/uploads/stores/160/2023/03/gg.png')),
                     IconButton(
                         onPressed: (){
-
+                          AuthService().signInWithApple();
                         },
                         icon: Image.network('https://demo.ziczacvn.com/uploads/stores/160/2023/03/apple-logo.png')),
                   ],
